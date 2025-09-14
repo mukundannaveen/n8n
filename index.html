@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PowerFlow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="Screenshot 2025-08-20 154043.png" alt="PowerFlow Logo">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">HOME</a></li>
+        <li class="dropdown">
+          <a href="#edge-app">EDGE AI</a>
+          <ul class="submenu">
+            <li><a href="slm.html">SMALL LANGUAGE MODEL</a></li>
+            <li><a href="#llm">AI INFERENCE</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">AUTOMATION</a>
+          <ul class="submenu">
+            <li><a href="#">N8N</a></li>
+            <li><a href="#">AGENTIC AUTOMATION</a></li>
+          </ul>
+        </li>
+        <li><a href="#Contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+      <h1>Welcome to PowerFlow</h1>
+      <p>What Can You Do with 40 TOPS?</p>
+      <p>⚙️ Real-Time AI Inference:</p>
+      <ul>
+        <li>Run multiple AI models simultaneously</li>
+        <li>Real-time computer vision tasks:</li>
+        <ul>
+          <li>Object detection (YOLOv5/yolov8)</li>
+          <li>Pose estimation</li>
+          <li>Face recognition</li>
+          <li>Image segmentation</li>
+        </ul>
+      </ul>
+    </div>
+  </main>
+
+  <section id="edge-app">
+    <div class="main-box">
+      <h1>Robotics & Edge Applications</h1>
+      <div class="category" id="Jetson-Devices">
+        <h2>🤖 Jetson Devices</h2>
+        <ul>
+          <li>Autonomous Drones</li>
+          <li>Delivery Robots</li>
+          <li>Smart surveillance</li>
+          <li>Industrial Automation</li>
+        </ul>
+      </div>
+      <div class="category" id="llm">
+        <h2>🗣️ Train LLM Model</h2>
+        <ul>
+          <li>Speech Recognition</li>
+          <li>Smart Assistants</li>
+          <li>Embedded NLP Models (e.g., BERT-Tiny)</li>
+          <li>Sensor Fusion and Control Logic</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+    <div class="container" id="Contact">
+        <h1>Contact Us</h1>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter the name">
+            <div id="nameError" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter the Email id">
+            <div id="emailError" class="error"></div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter you phone number">
+            <div id="phoneError" class="error"></div>
+
+             <label for="requirement">Requirement:</label>
+            <textarea id="requirement" name="requirement" placeholder="Write your requirement here..."></textarea>
+            <div id="requirementError" class="error"></div>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div id="result" class="success"></div>
+    </div>
+<script>
+  const questions = document.querySelectorAll('.question');
+questions.forEach(question => {
+  question.addEventListener('click', () => {
+    questions.forEach(q => {
+      if (q !== question) {
+        q.nextElementSibling.classList.remove('open');
+      }
+    });
+    question.nextElementSibling.classList.toggle('open');
+  });
+});
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+
+        function validateForm() {
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("phoneError").innerText = "";
+            document.getElementById("requirementError").innerText = "";
+            document.getElementById("result").innerText = "";
+
+            let isValid = true;
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const requirement = document.getElementById("requirement").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Please enter your name.";
+                isValid = false;
+            }
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email === "") {
+                document.getElementById("emailError").innerText = "Please enter your email.";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Please enter a valid email.";
+                isValid = false;
+            }
+            const phonePattern = /^[0-9]{10}$/;
+            if (phone === "") {
+                document.getElementById("phoneError").innerText = "Please enter your phone number.";
+                isValid = false;
+            } else if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").innerText = "Please enter a valid 10-digit phone number.";
+                isValid = false;
+            }
+            if (requirement === "") {
+                document.getElementById("requirementError").innerText = "Please describe your requirement.";
+                isValid = false;
+            }
+            if (isValid) {
+                sendEmail(name, email, phone, requirement);
+            }
+
+            return false;
+        }
+
+        function sendEmail(name, email, phone, requirement) {
+            const serviceID = "YOUR_SERVICE_ID";
+            const templateID = "YOUR_TEMPLATE_ID";
+
+            const templateParams = {
+                name: name,
+                email: email,
+                phone: phone,
+                requirement: requirement
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    document.getElementById("result").innerText = "Message sent successfully!";
+                    document.getElementById("contactForm").reset();
+                }, function(error) {
+                    document.getElementById("result").innerText = "Failed to send message. Please try again.";
+                    console.error("EmailJS error:", error);
+                });
+        }
+        </script>
+</body>
+</html>
