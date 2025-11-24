@@ -33,123 +33,102 @@
       </ul>
     </nav>
   </header>
-
   <main>
-    <div class="content">
-     <div><h1><span> Do It Yourself, Don't </span> </h1></div>
-     <div> <h2>Compromis for money</h2></div>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1> Jetson -as-a service</h1>
+          <p class="lead"> Get NVIDIA Jetson hardware delivered to your doorstep. No high upfront cost. No long-term commitment. Build and test powerful Edge AI projects faster and more affordably.</p>
+          <ul class="points">
+           <button class="btn start-gold">Start bulding today!</button>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="why-section">
+  <h2 class="why-title">Why AI Developers Prefer Monthly Jetson Access</h2>
+
+  <div class="why-cards">
+    <!-- Card 1 -->
+    <div class="why-card">
+      <h3>High Costs</h3>
+      <p>Buying Jetson devices is expensive.</p>
+      <blockquote>“Monthly subscription removes your upfront cost.”</blockquote>
     </div>
-    <h4>Generative Ai and the Edge</h4>
-    <h5>NVIDIA Jetson Orin: powering Generative Ai With efficiency and Performance</h5>
-    <br><br>
-    <div>
-      <p> NVIDIA Jetson Orin Nano Super Delivers exceptional Ai compute, Fast memory bandwith, and comprehensive software, offering superior energy efficiency for t he latest generation ai application>it supports fast inference for any transformer-base Generative Ai models.</p>
+
+    <!-- Card 2 -->
+    <div class="why-card">
+      <h3>setup &<br>configuration</h3>
+      <p>Setting up the AI environment takes hours.</p>
+      <blockquote>“We deliver Jetsons fully configured and ready to code.”</blockquote>
     </div>
-    <button id="press" type="submit">Contact</button>
+
+    <!-- Card 3 -->
+    <div class="why-card">
+      <h3>Hard to Scale</h3>
+      <p>Need more power? Must buy new hardware.</p>
+      <blockquote>“Upgrade/ downgrade anytime.”</blockquote>
+    </div>
+  </div>
+</section>
+    <section class="what-section">
+  <h2 class="what-title">What You Get</h2>
+  <div class="what-grid">
+     <div class="what-box">
+      <article class="card">
+          <h4>Jetson Orin NX</h4>
+          <p class="muted">AI performance: 67 TOPS</p>
+          <p><strong>RAM &amp; Storage:</strong> 8GB LPDDR5 / 512 GB NVMe</p>
+          <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="btn primary">Enquiry</a>
+      </article>
+        </div>
+
+         <div class="what-box">
+        <article class="card">
+          <h4>Jetson Orin AGX</h4>
+          <p class="muted">AI performance: 80 TOPS</p>
+          <p><strong>RAM &amp; Storage:</strong> 64GB LPDDR5 / 512 GB NVMe</p>
+          <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="btn primary">Enquiry</a>
+        </article>
+         </div>
+  <div class="what-box">
+        <article class="card">
+          <h4>Jetson Orin Nano</h4>
+          <p class="muted">AI performance: 67 TOPS</p>
+          <p><strong>RAM &amp; Storage:</strong> 16GB LPDDR5 / 512 GB NVMe</p>
+          <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="btn primary">Enquiry</a>
+        </article>
+        </div>
+      </div>
+</section>
+    <section class="faq container">
+      <h3>Ready-to-Run AI Environment</h3>
+      <div class="list">
+     <aside class="hero-right">
+          <div class="spec-card">
+            <ul>
+              <li>JetPack SDK</li>
+              <li>CUDA / cuDNN</li>
+              <li>TensorRT</li>
+              <li>DeepStream</li>
+              <li>OpenCV</li>
+              <li>Custom model support</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
-    <div class="container" id="Contact">
-        <h1>Contact Us</h1>
-        <form id="contactForm" onsubmit="return validateForm()">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter the name">
-            <div id="nameError" class="error"></div>
 
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" placeholder="Enter the Email id">
-            <div id="emailError" class="error"></div>
-
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" placeholder="Enter you phone number">
-            <div id="phoneError" class="error"></div>
-
-             <label for="requirement">Requirement:</label>
-            <textarea id="requirement" name="requirement" placeholder="Write your requirement here..."></textarea>
-            <div id="requirementError" class="error"></div>
-
-            <input type="submit" value="Submit">
-        </form>
-        <div id="result" class="success"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Jetson-as-a-service —@ power flow boys </p>
     </div>
-<script>
-  const questions = document.querySelectorAll('.question');
-questions.forEach(question => {
-  question.addEventListener('click', () => {
-    questions.forEach(q => {
-      if (q !== question) {
-        q.nextElementSibling.classList.remove('open');
-      }
-    });
-    question.nextElementSibling.classList.toggle('open');
-  });
-});
-        (function(){
-            emailjs.init("YOUR_PUBLIC_KEY");
-        })();
+  </footer>
 
-        function validateForm() {
-            document.getElementById("nameError").innerText = "";
-            document.getElementById("emailError").innerText = "";
-            document.getElementById("phoneError").innerText = "";
-            document.getElementById("requirementError").innerText = "";
-            document.getElementById("result").innerText = "";
-
-            let isValid = true;
-
-            const name = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const requirement = document.getElementById("requirement").value.trim();
-            if (name === "") {
-                document.getElementById("nameError").innerText = "Please enter your name.";
-                isValid = false;
-            }
-            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-            if (email === "") {
-                document.getElementById("emailError").innerText = "Please enter your email.";
-                isValid = false;
-            } else if (!emailPattern.test(email)) {
-                document.getElementById("emailError").innerText = "Please enter a valid email.";
-                isValid = false;
-            }
-            const phonePattern = /^[0-9]{10}$/;
-            if (phone === "") {
-                document.getElementById("phoneError").innerText = "Please enter your phone number.";
-                isValid = false;
-            } else if (!phonePattern.test(phone)) {
-                document.getElementById("phoneError").innerText = "Please enter a valid 10-digit phone number.";
-                isValid = false;
-            }
-            if (requirement === "") {
-                document.getElementById("requirementError").innerText = "Please describe your requirement.";
-                isValid = false;
-            }
-            if (isValid) {
-                sendEmail(name, email, phone, requirement);
-            }
-
-            return false;
-        }
-
-        function sendEmail(name, email, phone, requirement) {
-            const serviceID = "YOUR_SERVICE_ID";
-            const templateID = "YOUR_TEMPLATE_ID";
-
-            const templateParams = {
-                name: name,
-                email: email,
-                phone: phone,
-                requirement: requirement
-            };
-
-            emailjs.send(serviceID, templateID, templateParams)
-                .then(function(response) {
-                    document.getElementById("result").innerText = "Message sent successfully!";
-                    document.getElementById("contactForm").reset();
-                }, function(error) {
-                    document.getElementById("result").innerText = "Failed to send message. Please try again.";
-                    console.error("EmailJS error:", error);
-                });
-        }
-        </script>
+  <script>
+    // small helper
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
